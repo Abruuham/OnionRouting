@@ -26,7 +26,6 @@ public class Main {
         }
     }
 
-
 //    public browse(){
 //        WebBrowser browser = new WebBrowser();
 //        browser.run(); // Do we need to run it with a config file?

@@ -1,0 +1,36 @@
+Tried to make a simple web server, will come back to in the future if needed.
+
+
+//    static Socket socket = null;
+//    static BufferedReader in = null;
+//    static PrintWriter out = null;
+//
+//    public static void main(String[] args) {
+//
+//        int fromServer;
+//        try
+//        {
+//
+//            socket = new Socket("localhost", 9999);
+//            in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+//            out = new PrintWriter( new BufferedOutputStream(socket.getOutputStream()));
+//            out.println("GET /Library/WebServer/Documents/index.html.en HTTP/1.0");
+//            out.flush();
+//            while ((fromServer = in.read()) != -1)
+//            {
+//                System.out.write(fromServer);
+//                System.out.flush();
+//            }
+//
+//        }
+//        catch (UnknownHostException e)
+//        {
+//            System.out.println("Unknown host");
+//        }
+//        catch (IOException e)
+//        {
+//            System.out.println(e);
+//            System.out.println("IO error");
+//        }
+//
+//    }

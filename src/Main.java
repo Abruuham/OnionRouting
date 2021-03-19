@@ -39,6 +39,9 @@ public class Main {
     }
 
 
+    /**
+     * Opens the browser
+     */
     public static void browse() {
         System.out.println("Welcome to the Internet or Something"); //browse();
         browser.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
@@ -55,7 +58,11 @@ public class Main {
         Path fileName = Path.of("Control.txt");
         Files.writeString(fileName, data);
     }
-    
+
+    /**
+     * Downloads the specified files that the user previously saved, to the root directory
+     * @param sc - passes a scanner
+     */
     public static void download(Scanner sc) {
         VirtualMemory.printMemory();
         if (VirtualMemory.memory.size() == 0) System.out.println("No files to download...");
@@ -68,6 +75,9 @@ public class Main {
     }
 
 
+    /**
+     * lists all downloaded files in the root directory
+     */
     public static void listFiles() {
         File directoryPath = new File(".\\");
         //List of all files and directories

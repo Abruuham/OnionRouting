@@ -1,0 +1,10 @@
+safeSearch
+on
+privacy
+on
+largeFont
+on
+Dictionary
+on
+saveLinks
+on

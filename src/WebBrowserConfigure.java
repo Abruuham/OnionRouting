@@ -15,7 +15,7 @@ public class WebBrowserConfigure {
 //         //write to control file with seperated lines for choice and answer
 //     }
 
-    private static String readFromInputStream(InputStream inputStream) throws IOException {
+    public static String readFromInputStream(InputStream inputStream) throws IOException {
         StringBuilder resultStringBuilder = new StringBuilder();
         String option = "";
         String fileTxt = "";

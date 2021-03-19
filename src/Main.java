@@ -1,5 +1,9 @@
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
 public class Main {
@@ -7,7 +11,7 @@ public class Main {
     private static WebBrowser browser = new WebBrowser();
     private static List<String> exclusionList = Arrays.asList(".git", ".idea", "OnionRouting.iml", "out", "README.md", "src");
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // write your code here
         /**
          *  Use the terminal as the command line and listen for commands
@@ -27,6 +31,7 @@ public class Main {
             else if (command.equals("download")) download(scanner);
             else if (command.equals("power")) { System.out.println("Goodbye for now!");browser.dispose(); }
             else if (command.equals("ls")) listFiles();
+            else if (command.equals("notepad")) openNotepad();
             else System.out.println("No command \"" + command + " \"");
         }
     }
@@ -45,7 +50,6 @@ public class Main {
         ClassLoader classLoader = WebBrowserConfigure.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("Control.txt");
         String data = WebBrowserConfigure.readFromInputStream(inputStream);
-
         Path fileName = Path.of("Control.txt");
         Files.writeString(fileName, data);
     }
@@ -78,6 +82,10 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    public static void openNotepad(){
+        EncryptedNotepad e = new EncryptedNotepad();
     }
 }
 

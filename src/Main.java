@@ -16,6 +16,7 @@ public class Main {
         /**
          *  Use the terminal as the command line and listen for commands
          */
+        Extras.ascii();
         System.out.println("Welcome to Onions-R-Us!\n");
         System.out.println("Enter a command to begin!\n");
 
@@ -29,9 +30,10 @@ public class Main {
             if (command.equals("browse")) browse();
             else if (command.equals("configure")) configure();
             else if (command.equals("download")) download(scanner);
-            else if (command.equals("power")) { System.out.println("Goodbye for now!");browser.dispose(); }
+            else if (command.equals("power")) { System.out.println("Goodbye for now!"); browser.dispose(); System.exit(0); }
             else if (command.equals("ls")) listFiles();
             else if (command.equals("notepad")) openNotepad();
+            else if (command.equals("help")) Extras.commands();
             else System.out.println("No command \"" + command + " \"");
         }
     }

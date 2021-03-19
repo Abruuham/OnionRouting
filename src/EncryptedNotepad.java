@@ -17,7 +17,7 @@ class EncryptedNotepad extends JFrame implements ActionListener {
     EncryptedNotepad()
     {
         // Create a frame
-        f = new JFrame("editor");
+        f = new JFrame("Onion Editor");
 
         try {
             // Set metl look and feel

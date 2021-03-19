@@ -12,8 +12,9 @@ public class Main {
         /**
          *  Use the terminal as the command line and listen for commands
          */
+        Extras.printName();
         System.out.println("Welcome to Onions-R-Us!\n");
-        System.out.println("Enter a command to begin!\n");
+        System.out.println("Enter a command to begin! (For a list of commands, type \'help\') \n");
 
         Scanner scanner = new Scanner(System.in);
 
@@ -27,6 +28,7 @@ public class Main {
             else if (command.equals("download")) download(scanner);
             else if (command.equals("power")) { System.out.println("Goodbye for now!");browser.dispose(); }
             else if (command.equals("ls")) listFiles();
+            else if (command.equals("help")) Extras.commands();
             else System.out.println("No command \"" + command + " \"");
         }
     }

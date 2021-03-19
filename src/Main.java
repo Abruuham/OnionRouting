@@ -44,7 +44,7 @@ public class Main {
 //    }
     public static void download(Scanner sc) {
         VirtualMemory.printMemory();
-        if (VirtualMemory.memory.size() == 0) System.out.println("No files to download");
+        if (VirtualMemory.memory.size() == 0) System.out.println("No files to download...");
 
         else {
             System.out.println("To download all files use \'all\', otherwise use the index of the file");
@@ -58,14 +58,18 @@ public class Main {
         File directoryPath = new File(".\\");
         //List of all files and directories
         String contents[] = directoryPath.list();
-        System.out.println();
-        for (int i = 0; i < contents.length; i++) {
-            if (!exclusionList.contains(contents[i])) {
-                System.out.println("|-- " + contents[i]);
-            }
-        }
-        System.out.println();
+        if(contents == null) {
+            System.out.println("Nothing to see...");
 
+        } else {
+            System.out.println();
+            for (int i = 0; i < contents.length; i++) {
+                if (!exclusionList.contains(contents[i])) {
+                    System.out.println("|-- " + contents[i]);
+                }
+            }
+            System.out.println();
+        }
     }
 }
 

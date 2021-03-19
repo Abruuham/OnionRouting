@@ -4,16 +4,16 @@ import java.nio.file.Path;
 import java.util.*;
 
 public class WebBrowserConfigure {
-    public static void main(String[] args) throws IOException {
-        ClassLoader classLoader = WebBrowserConfigure.class.getClassLoader();
-        InputStream inputStream = classLoader.getResourceAsStream("Control.txt");
-        String data = readFromInputStream(inputStream);
+//     public static void main(String[] args) throws IOException {
+//         ClassLoader classLoader = WebBrowserConfigure.class.getClassLoader();
+//         InputStream inputStream = classLoader.getResourceAsStream("Control.txt");
+//         String data = readFromInputStream(inputStream);
 
-        Path fileName = Path.of("Control.txt");
-        Files.writeString(fileName, data);
-//        System.out.println(data);
-        //write to control file with seperated lines for choice and answer
-    }
+//         Path fileName = Path.of("Control.txt");
+//         Files.writeString(fileName, data);
+// //        System.out.println(data);
+//         //write to control file with seperated lines for choice and answer
+//     }
 
     private static String readFromInputStream(InputStream inputStream) throws IOException {
         StringBuilder resultStringBuilder = new StringBuilder();

@@ -18,13 +18,29 @@ public class Main {
 //        System.out.print("user:: ");
         String command = "";
 
+        WebBrowser browser = new WebBrowser();
         while(!command.equals("power")){
             System.out.print("user:: ");
             command = scanner.nextLine();
+<<<<<<< Updated upstream
             if(command.equals("browse")) browse();
             else if(command.equals("configure")) System.out.println("Configure your thing");//configure();
             else if(command.equals("download")) download(scanner);
             else if(command.equals("power")){ System.out.println("Goodbye for now!");  browser.dispose();}
+=======
+            if(command.equals("browse")) {
+                System.out.println("Welcome to the Internet or Something"); //browse();
+                ;
+                browser.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
+                browser.setSize(800,  600);
+                browser.setVisible(true);
+            }
+            else if(command.equals("configure")) System.out.println("Configure your thing");//configure();
+            else if(command.equals("download")) System.out.println("Downloading your garbage");//download();
+            else if(command.equals("power")){
+                System.out.println("Goodbye for now!");
+                browser.dispose();
+            }
             else System.out.println("No command \"" + command + " \"");
         }
     }

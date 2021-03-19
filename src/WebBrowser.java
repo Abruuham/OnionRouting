@@ -5,6 +5,8 @@ import java.net.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Stack;
 import javax.swing.*;
 import javax.swing.event.*;
 
@@ -12,7 +14,8 @@ public class WebBrowser extends JFrame{
 
     private JTextField addressField;
     private JEditorPane window;
-    private ArrayList<String> history = new ArrayList<String>();
+    private JButton backButton;
+    private LinkedList<String> history = new LinkedList<>();
     private ArrayList<Object> downloads = new ArrayList<>();
 
     public WebBrowser() {
@@ -22,7 +25,13 @@ public class WebBrowser extends JFrame{
         addressField.addActionListener(
                 event -> loadSite(event.getActionCommand())
         );
+
         add(addressField, BorderLayout.NORTH);
+        backButton = new JButton("<");
+        backButton.addActionListener(
+                event -> loadSite(history.pop())
+        );
+        add(backButton, BorderLayout.WEST);
 
         window = new JEditorPane();
         window.setEditable(false);
@@ -31,20 +40,24 @@ public class WebBrowser extends JFrame{
                     if (event.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
                         loadSite(event.getURL().toString());
                     }
+                    System.out.println(history);
                 }
 
         );
         add(new JScrollPane(window), BorderLayout.CENTER);
-
 
     }
 
     private void loadSite(String text) {
         try {
             if(text.endsWith(".zip")){
+<<<<<<< Updated upstream
                 VirtualMemory.addToMemory(text);
                 JOptionPane.showMessageDialog(null, "Added to Downloads!");
                 return;
+=======
+
+>>>>>>> Stashed changes
             }
             window.setPage(text);
             addressField.setText(text);

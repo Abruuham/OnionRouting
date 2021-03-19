@@ -45,6 +45,7 @@ public class Main {
     public static void download(Scanner sc) {
         VirtualMemory.printMemory();
         if (VirtualMemory.memory.size() == 0) System.out.println("No files to download");
+
         else {
             System.out.println("To download all files use \'all\', otherwise use the index of the file");
             String select = sc.nextLine();
@@ -64,6 +65,7 @@ public class Main {
             }
         }
         System.out.println();
+
     }
 }
 

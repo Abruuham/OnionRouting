@@ -51,13 +51,9 @@ public class WebBrowser extends JFrame{
     private void loadSite(String text) {
         try {
             if(text.endsWith(".zip")){
-<<<<<<< Updated upstream
                 VirtualMemory.addToMemory(text);
                 JOptionPane.showMessageDialog(null, "Added to Downloads!");
                 return;
-=======
-
->>>>>>> Stashed changes
             }
             window.setPage(text);
             addressField.setText(text);

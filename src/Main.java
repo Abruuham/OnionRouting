@@ -48,12 +48,40 @@ public class Main {
 
     public static void configure() throws IOException {
         System.out.println("Configure your thang!");
+        int choice = 1;
+        int repeat = 2;
+        Scanner yesNo = new Scanner(System.in);
 
+        while (repeat == 2) {
+            configHelp(choice);
+            System.out.println("Are you satisfied with the settings?\n1. Yes\t\t2. No");
+            repeat = yesNo.nextInt();
+        }
+    }
+
+    private static void configHelp(int chose) throws IOException{
         ClassLoader classLoader = WebBrowserConfigure.class.getClassLoader();
         InputStream inputStream = classLoader.getResourceAsStream("Control.txt");
-        String data = WebBrowserConfigure.readFromInputStream(inputStream);
-        Path fileName = Path.of("Control.txt");
-        Files.writeString(fileName, data);
+        System.out.println("Would you like \n1. to see your current settings?\n " +
+                "OR\n2. Configure your settings?");
+        Scanner mainObj = new Scanner(System.in);
+        chose = mainObj.nextInt();
+        if (chose == 1) {
+//            look at settings
+            System.out.println("Your settings are");
+            String line = "";
+            try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
+                while ((line = br.readLine()) != null) {
+                    System.out.println(line + ": " + br.readLine());
+                }
+            }
+        } else {
+//            configure all settings
+            String data = WebBrowserConfigure.readFromInputStream(inputStream);
+
+            Path fileName = Path.of("src/Control.txt");
+            Files.writeString(fileName, data);
+        }
     }
     
     public static void download(Scanner sc) {

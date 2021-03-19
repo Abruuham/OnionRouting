@@ -19,29 +19,29 @@ public class Main {
         while(!command.equals("power")){
             System.out.print("user:: ");
             command = scanner.nextLine();
-            if(command.equals("browse")) {
-                System.out.println("Welcome to the Internet or Something"); //browse();
-                WebBrowser browser = new WebBrowser();
-                browser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                browser.setSize(800,  600);
-                browser.setVisible(true);
-            }
+            if(command.equals("browse")) browse();
             else if(command.equals("configure")) System.out.println("Configure your thing");//configure();
-            else if(command.equals("download")) System.out.println("Downloading your garbage");//download();
+            else if(command.equals("download")) download(scanner);
             else if(command.equals("power")) System.out.println("Goodbye for now!");
             else System.out.println("No command \"" + command + " \"");
         }
     }
 
 
-//    public browse(){
-//        WebBrowser browser = new WebBrowser();
-//        browser.run(); // Do we need to run it with a config file?
-//    }
+    public static void browse(){
+        System.out.println("Welcome to the Internet or Something"); //browse();
+        WebBrowser browser = new WebBrowser();
+        browser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        browser.setSize(800,  600);
+        browser.setVisible(true);
+    }
 //    public configure(){
 //        WebBrowserConfigure.configure(); // will it write to a file or simply change it in real time?
 //    }
-//    public download(){
-//        VirtualMemory.download(); // Download all or can we specify files?
-//    }
+    public static void download(Scanner sc){
+        VirtualMemory.printMemory();
+        System.out.println("To download all files use \'all\', otherwise use the index of the file");
+        String select = sc.nextLine();
+        VirtualMemory.execute(select); // Download all or can we specify files?
+    }
 }

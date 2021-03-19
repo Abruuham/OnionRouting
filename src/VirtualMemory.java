@@ -12,7 +12,7 @@ public class VirtualMemory{
     }
 
     // Call this with the link to the download
-    public void addToMemory(String extension){
+    public static void addToMemory(String extension){
         memory.add(extension);
     }
     // Download specified files in the array

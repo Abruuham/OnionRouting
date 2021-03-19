@@ -3,6 +3,8 @@ import java.util.*;
 
 public class Main {
 
+    private static WebBrowser browser = new WebBrowser();
+
     public static void main(String[] args) {
     // write your code here
         /**
@@ -13,7 +15,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("user:: ");
+//        System.out.print("user:: ");
         String command = "";
 
         while(!command.equals("power")){
@@ -22,7 +24,7 @@ public class Main {
             if(command.equals("browse")) browse();
             else if(command.equals("configure")) System.out.println("Configure your thing");//configure();
             else if(command.equals("download")) download(scanner);
-            else if(command.equals("power")) System.out.println("Goodbye for now!");
+            else if(command.equals("power")){ System.out.println("Goodbye for now!");  browser.dispose();}
             else System.out.println("No command \"" + command + " \"");
         }
     }
@@ -30,8 +32,7 @@ public class Main {
 
     public static void browse(){
         System.out.println("Welcome to the Internet or Something"); //browse();
-        WebBrowser browser = new WebBrowser();
-        browser.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        browser.setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
         browser.setSize(800,  600);
         browser.setVisible(true);
     }

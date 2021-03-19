@@ -13,9 +13,10 @@ public class WebBrowser extends JFrame{
     private JTextField addressField;
     private JEditorPane window;
     private ArrayList<String> history = new ArrayList<String>();
+    private ArrayList<Object> downloads = new ArrayList<>();
 
     public WebBrowser() {
-        super("Secure Web Broswer");
+        super("Secure Web Browser");
 
         addressField = new JTextField("https://");
         addressField.addActionListener(
@@ -40,6 +41,11 @@ public class WebBrowser extends JFrame{
 
     private void loadSite(String text) {
         try {
+            if(text.endsWith(".zip")){
+                VirtualMemory.addToMemory(text);
+                JOptionPane.showMessageDialog(null, "Added to Downloads!");
+                return;
+            }
             window.setPage(text);
             addressField.setText(text);
             history.add(text);

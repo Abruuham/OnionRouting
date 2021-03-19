@@ -2,38 +2,42 @@ import java.util.*;
 import java.io.*;
 import java.net.*;
 
-public class VirtualMemory{
+public class VirtualMemory {
     WebBrowser browser;
     public static ArrayList<String> memory = new ArrayList<String>();  // The list of links the user has "Downloaded"
 
     // Use this to see current files
-    public static ArrayList<String> printMemory(){
-        return memory;
+    public static void printMemory() {
+        for(int i = 0; i < memory.size(); i++) {
+            System.out.println(memory.get(i));
+        }
     }
 
     // Call this with the link to the download
-    public static void addToMemory(String extension){
+    public static void addToMemory(String extension) {
         memory.add(extension);
     }
+
     // Download specified files in the array
-    public static void execute(String file){
+    public static void execute(String file) {
         Scanner sc = new Scanner(System.in);
         String fileName;
-        if(file.equals("all")) {
+        if (file.equals("all")) {
             for (int i = 0; i < memory.size(); i++) {
                 System.out.println("What would you like the first file called?\n");
                 fileName = sc.nextLine();
-                download(memory.get(i), fileName);
+                download(memory.remove(i), fileName);
             }
-        }else {
+        } else {
             System.out.println("What would you like the first file called?\n");
             fileName = sc.nextLine();
-            download(memory.get(Integer.parseInt(file)), fileName);
+            download(memory.remove(Integer.parseInt(file)), fileName);
         }
     }
-    public static void download(String FILE_URL, String FILE_NAME){
+
+    public static void download(String FILE_URL, String FILE_NAME) {
         try (BufferedInputStream in = new BufferedInputStream(new URL(FILE_URL).openStream());
-             FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME)) {
+             FileOutputStream fileOutputStream = new FileOutputStream(FILE_NAME + ".zip")) {
             byte dataBuffer[] = new byte[1024];
             int bytesRead;
             while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) {
@@ -45,3 +49,5 @@ public class VirtualMemory{
         }
     }
 }
+
+

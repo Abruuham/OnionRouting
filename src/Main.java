@@ -15,7 +15,6 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
-//        System.out.print("user:: ");
         String command = "";
 
         while(!command.equals("power")){
@@ -41,8 +40,11 @@ public class Main {
 //    }
     public static void download(Scanner sc){
         VirtualMemory.printMemory();
-        System.out.println("To download all files use \'all\', otherwise use the index of the file");
-        String select = sc.nextLine();
-        VirtualMemory.execute(select); // Download all or can we specify files?
+        if(VirtualMemory.memory.size() == 0) System.out.println("No files to download");
+        else {
+            System.out.println("To download all files use \'all\', otherwise use the index of the file");
+            String select = sc.nextLine();
+            VirtualMemory.execute(select); // Download all or can we specify files?
+        }
     }
 }

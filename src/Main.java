@@ -23,7 +23,7 @@ public class Main {
             System.out.print("user:: ");
             command = scanner.nextLine();
             if (command.equals("browse")) browse();
-            else if (command.equals("configure")) System.out.println("Configure your thing");
+            else if (command.equals("configure")) configure();
             else if (command.equals("download")) download(scanner);
             else if (command.equals("power")) { System.out.println("Goodbye for now!");browser.dispose(); }
             else if (command.equals("ls")) listFiles();
@@ -39,9 +39,17 @@ public class Main {
         browser.setVisible(true);
     }
 
-    //    public configure(){
-//        WebBrowserConfigure.configure(); // will it write to a file or simply change it in real time?
-//    }
+    public static void configure() throws IOException {
+        System.out.println("Configure your thang!");
+
+        ClassLoader classLoader = WebBrowserConfigure.class.getClassLoader();
+        InputStream inputStream = classLoader.getResourceAsStream("Control.txt");
+        String data = WebBrowserConfigure.readFromInputStream(inputStream);
+
+        Path fileName = Path.of("Control.txt");
+        Files.writeString(fileName, data);
+    }
+    
     public static void download(Scanner sc) {
         VirtualMemory.printMemory();
         if (VirtualMemory.memory.size() == 0) System.out.println("No files to download...");
